@@ -1,52 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Tec's</title>
-    <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISC en el TecNM</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f0f2f5; color: #333; }
+        header { background-color: #003366; color: white; text-align: center; padding: 2rem; }
+        header img { max-width: 300px; margin-bottom: 1rem; }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        nav { text-align: center; padding: 1rem; background-color: #f8f9fa; border-bottom: 1px solid #dee2e6; }
+        .nav-button { text-decoration: none; color: white; background-color: #0d6efd; padding: 10px 20px; margin: 0 10px; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; }
+        .nav-button:hover { background-color: #0b5ed7; }
+        main { padding: 2rem; max-width: 1200px; margin: auto; }
+        footer { text-align: center; padding: 1.5rem; background-color: #343a40; color: white; margin-top: 2rem; }
+
+        /* Estilos del carrusel y tarjetas */
+        .team-section { text-align: center; }
+        .carousel-wrapper { position: relative; max-width: 900px; margin: 2rem auto; }
+        .team-container { display: flex; justify-content: center; align-items: center; gap: 2rem; overflow: hidden; }
+        .team-card { background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-width: 250px; padding: 1.5rem; text-align: center; transition: transform 0.3s, opacity 0.5s; display: none; /* Ocultar todas las tarjetas por defecto */ }
+        .team-card.active { display: block; /* Mostrar solo las activas */ }
+        .team-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 4px solid #003366; }
+        .team-card h3 { margin: 0.5rem 0; color: #003366; }
+        .team-card p { font-size: 0.9rem; color: #6c757d; }
+
+        /* Estilos de las flechas de navegación */
+        .carousel-arrow { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 51, 102, 0.7); color: white; border: none; font-size: 2rem; padding: 10px 15px; border-radius: 50%; z-index: 10; user-select: none; transition: background-color 0.3s; }
+        .carousel-arrow:hover { background-color: rgba(0, 51, 102, 1); }
+        #prev-arrow { left: -20px; }
+        #next-arrow { right: -20px; }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <a href="index.html" class="logo_link"><img src="img/logo.png" alt="" class="logo_img"></a>
-        </div>
+
+    <header>
+        <img src="img/pleca_tecnm.jpg" alt="Logo del Tecnológico Nacional de México">
+        <h1>Ingeniería en Sistemas Computacionales en el TecNM 💻</h1>
+        <p>Análisis de la Oferta Educativa a Nivel Nacional</p>
     </header>
-    <main class="main">
-        <sector class="sector_top">
-            <article class="fed">
-                <div class="title"><h1 class="h1">Federalizados</h1></div>
-                <div class="text">
-                    <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing 
-                        elit. Ad, fugit maiores ex in cumque laborum quae placeat eaque nemo 
-                        blanditiis dolorum eos voluptate doloribus aspernatur alias ratione 
-                        est perspiciatis ipsa?
-                    </p>
+
+    <nav>
+        <a href="federales.html" class="nav-button">Ver Campus Federalizados</a>
+        <a href="descentralizados.html" class="nav-button">Ver Campus Descentralizados</a>
+    </nav>
+
+    <main>
+        <section class="team-section">
+            <h2>Integrantes del Equipo</h2>
+            <p>Información de los responsables de la investigación.</p>
+            
+            <div class="carousel-wrapper">
+                <button id="prev-arrow" class="carousel-arrow">‹</button>
+                <div class="team-container">
+                    
+                    <div class="team-card">
+                        <img src="img/kr0nn0s_Graduado.png" alt="Foto del integrante">
+                        <h3>Christian Eduardo Rosales Gonzalez</h3>
+                        <p>CEO - Ciberseguridad</p>
+                        <p>25270553</p>
+                    </div>
+                    
+                    <div class="team-card">
+                        <img src="https://via.placeholder.com/150" alt="Foto del integrante">
+                        <h3>Magdiel Daza Arreola</h3><!-- Falta info -->
+                        <p>[Rol o especialidad]</p>
+                        <p>No. de Control: [Su número]</p>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="https://via.placeholder.com/150" alt="Foto del integrante">
+                        <h3>Angel Oswaldo Avedaño Ovando</h3> <!-- Falta info -->
+                        <p>[Rol o especialidad]</p>
+                        <p>No. de Control: [Su número]</p>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="https://via.placeholder.com/150" alt="Foto del integrante">
+                        <h3>Marco Antonio Argueta Gonzalez</h3> <!-- Falta info -->
+                        <p>[Rol o especialidad]</p>
+                        <p>No. de Control: [Su número]</p>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="https://via.placeholder.com/150" alt="Foto del integrante">
+                        <h3>Angel Miguel Rasgado Martinez</h3> <!-- Falta info -->
+                        <p>[Rol o especialidad]</p>
+                        <p>No. de Control: [Su número]</p>
+                    </div>
                 </div>
-                <div class="button">
-                    <a href="federalizados.html" class="link_button">Federalizados</a>
-                </div>
-            </article>
-            <article class="des">
-                <div class="title"><h1 class="h1">Descentralizados</h1></div>
-                <div class="text">
-                    <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing 
-                        elit. Ad, fugit maiores ex in cumque laborum quae placeat eaque nemo 
-                        blanditiis dolorum eos voluptate doloribus aspernatur alias ratione 
-                        est perspiciatis ipsa?
-                    </p>
-                </div>
-                <div class="button">
-                    <a href="desentalizados.html" class="link_button">Descentralizados</a>
-                </div>
-            </article>
-        </sector>
+                <button id="next-arrow" class="carousel-arrow">›</button>
+            </div>
+        </section>
     </main>
-    <aside class="aside">
 
-    </aside>
-    <footer class="footer">
-
+    <footer>
+        <p>Fundamentos de Investigación &copy; 2025</p>
+        <p>Tecnológico Nacional de México, Campus Tuxtla Gutiérrez</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.team-card');
+            const prevArrow = document.getElementById('prev-arrow');
+            const nextArrow = document.getElementById('next-arrow');
+            const totalCards = cards.length;
+            const cardsToShow = 3;
+            let currentIndex = 0;
+            let autoSlideInterval;
+
+            function showCards() {
+                // Oculta todas las tarjetas primero
+                cards.forEach(card => card.classList.remove('active'));
+                
+                // Muestra las 3 tarjetas correspondientes
+                for (let i = 0; i < cardsToShow; i++) {
+                    // El operador % (módulo) asegura que el índice se reinicie al llegar al final (ej. 5 % 5 = 0)
+                    const cardIndex = (currentIndex + i) % totalCards;
+                    cards[cardIndex].classList.add('active');
+                }
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalCards;
+                showCards();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                showCards();
+            }
+
+            // Inicia el carrusel automático
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000); // 15000 ms = 15 segundos
+            }
+
+            // Reinicia el carrusel automático
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Event listeners para las flechas
+            nextArrow.addEventListener('click', () => {
+                nextSlide();
+                resetAutoSlide(); // Reinicia el temporizador con cada clic manual
+            });
+
+            prevArrow.addEventListener('click', () => {
+                prevSlide();
+                resetAutoSlide(); // Reinicia el temporizador con cada clic manual
+            });
+
+            // Mostrar las primeras tarjetas y empezar el ciclo automático
+            showCards();
+            startAutoSlide();
+        });
+    </script>
 </body>
 </html>

@@ -10,17 +10,17 @@
         header img { max-width: 300px; margin-bottom: 1rem; }
         header h1 { margin: 0; font-size: 2.5rem; }
         nav { text-align: center; padding: 1rem; background-color: #f8f9fa; border-bottom: 1px solid #dee2e6; }
-        .nav-button { text-decoration: none; color: white; background-color: #0d6efd; padding: 10px 20px; margin: 0 10px; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; }
+        .nav-button { text-decoration: none; color: white; background-color: #0d6efd; padding: 10px 20px; margin: 0 10px; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; display: inline-block; }
         .nav-button:hover { background-color: #0b5ed7; }
         main { padding: 2rem; max-width: 1200px; margin: auto; }
         footer { text-align: center; padding: 1.5rem; background-color: #343a40; color: white; margin-top: 2rem; }
 
         /* Estilos del carrusel y tarjetas */
         .team-section { text-align: center; }
-        .carousel-wrapper { position: relative; max-width: 900px; margin: 2rem auto; }
+        .carousel-wrapper { position: relative; max-width: 900px; margin: 2rem auto; transition: max-width 0.3s ease; }
         .team-container { display: flex; justify-content: center; align-items: center; gap: 2rem; overflow: hidden; }
-        .team-card { background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-width: 250px; padding: 1.5rem; text-align: center; transition: transform 0.3s, opacity 0.5s; display: none; /* Ocultar todas las tarjetas por defecto */ }
-        .team-card.active { display: block; /* Mostrar solo las activas */ }
+        .team-card { background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-width: 250px; padding: 1.5rem; text-align: center; transition: transform 0.3s, opacity 0.5s; display: none; }
+        .team-card.active { display: block; }
         .team-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 4px solid #003366; }
         .team-card h3 { margin: 0.5rem 0; color: #003366; }
         .team-card p { font-size: 0.9rem; color: #6c757d; }
@@ -30,12 +30,27 @@
         .carousel-arrow:hover { background-color: rgba(0, 51, 102, 1); }
         #prev-arrow { left: -20px; }
         #next-arrow { right: -20px; }
+        
+        /* Estilos para móviles */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .carousel-wrapper { max-width: 280px; }
+            #prev-arrow { left: 5px; }
+            #next-arrow { right: 5px; }
+
+            /* --- CORRECCIÓN PARA BOTONES SOBREPUESTOS --- */
+            .nav-button {
+                display: block; /* Apila los botones verticalmente */
+                margin: 10px auto; /* Añade espacio entre ellos y los centra */
+                width: 80%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="img/pleca_tecnm.jpg" alt="Logo del Tecnológico Nacional de México">
+        <img src="pleca_tecnm.jpg" alt="Logo del Tecnológico Nacional de México">
         <h1>Ingeniería en Sistemas Computacionales en el TecNM 💻</h1>
         <p>Análisis de la Oferta Educativa a Nivel Nacional</p>
     </header>
@@ -57,34 +72,34 @@
                     <div class="team-card">
                         <img src="img/kr0nn0s_Graduado.png" alt="Foto del integrante">
                         <h3>Christian Eduardo Rosales Gonzalez</h3>
-                        <p>CEO - Ciberseguridad</p>
+                        <p>Ciberseguridad</p>
                         <p>25270553</p>
                     </div>
                     
                     <div class="team-card">
                         <img src="https://via.placeholder.com/150" alt="Foto del integrante">
-                        <h3>Magdiel Daza Arreola</h3><!-- Falta info -->
+                        <h3>Magdiel Daza Arreola</h3>
                         <p>[Rol o especialidad]</p>
                         <p>No. de Control: [Su número]</p>
                     </div>
 
                     <div class="team-card">
                         <img src="https://via.placeholder.com/150" alt="Foto del integrante">
-                        <h3>Angel Oswaldo Avedaño Ovando</h3> <!-- Falta info -->
+                        <h3>Angel Oswaldo Avendaño Ovando</h3>
                         <p>[Rol o especialidad]</p>
                         <p>No. de Control: [Su número]</p>
                     </div>
 
                     <div class="team-card">
                         <img src="https://via.placeholder.com/150" alt="Foto del integrante">
-                        <h3>Marco Antonio Argueta Gonzalez</h3> <!-- Falta info -->
+                        <h3>Marco Antonio Argueta Gonzalez</h3>
                         <p>[Rol o especialidad]</p>
                         <p>No. de Control: [Su número]</p>
                     </div>
 
                     <div class="team-card">
                         <img src="https://via.placeholder.com/150" alt="Foto del integrante">
-                        <h3>Angel Miguel Rasgado Martinez</h3> <!-- Falta info -->
+                        <h3>Angel Miguel Rasgado Martinez</h3>
                         <p>[Rol o especialidad]</p>
                         <p>No. de Control: [Su número]</p>
                     </div>
@@ -105,17 +120,23 @@
             const prevArrow = document.getElementById('prev-arrow');
             const nextArrow = document.getElementById('next-arrow');
             const totalCards = cards.length;
-            const cardsToShow = 3;
             let currentIndex = 0;
             let autoSlideInterval;
+            
+            let cardsToShow = 3; 
+
+            function updateCardsToShow() {
+                if (window.innerWidth <= 768) {
+                    cardsToShow = 1; 
+                } else {
+                    cardsToShow = 3; 
+                }
+            }
 
             function showCards() {
-                // Oculta todas las tarjetas primero
                 cards.forEach(card => card.classList.remove('active'));
                 
-                // Muestra las 3 tarjetas correspondientes
                 for (let i = 0; i < cardsToShow; i++) {
-                    // El operador % (módulo) asegura que el índice se reinicie al llegar al final (ej. 5 % 5 = 0)
                     const cardIndex = (currentIndex + i) % totalCards;
                     cards[cardIndex].classList.add('active');
                 }
@@ -131,29 +152,31 @@
                 showCards();
             }
 
-            // Inicia el carrusel automático
             function startAutoSlide() {
-                autoSlideInterval = setInterval(nextSlide, 5000); // 15000 ms = 15 segundos
+                autoSlideInterval = setInterval(nextSlide, 15000); 
             }
 
-            // Reinicia el carrusel automático
             function resetAutoSlide() {
                 clearInterval(autoSlideInterval);
                 startAutoSlide();
             }
 
-            // Event listeners para las flechas
             nextArrow.addEventListener('click', () => {
                 nextSlide();
-                resetAutoSlide(); // Reinicia el temporizador con cada clic manual
+                resetAutoSlide(); 
             });
 
             prevArrow.addEventListener('click', () => {
                 prevSlide();
-                resetAutoSlide(); // Reinicia el temporizador con cada clic manual
+                resetAutoSlide(); 
             });
 
-            // Mostrar las primeras tarjetas y empezar el ciclo automático
+            window.addEventListener('resize', () => {
+                updateCardsToShow();
+                showCards();
+            });
+
+            updateCardsToShow();
             showCards();
             startAutoSlide();
         });
